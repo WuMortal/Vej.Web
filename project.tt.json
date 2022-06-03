@@ -1,0 +1,13 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "Vej",
+  "description": "微易记，提供简单、快捷、方便的记账服务",
+  "appid": "touristappid",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram"
+}
