@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "./",
-  "projectname": "Vej",
+  "projectname": "Vej.Web",
   "description": "微易记，提供简单、快捷、方便的记账服务",
   "appid": "touristappid",
   "setting": {

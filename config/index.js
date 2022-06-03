@@ -1,5 +1,5 @@
 const config = {
-  projectName: 'Vej',
+  projectName: 'Vej.Web',
   date: '2022-6-3',
   designWidth: 375,
   deviceRatio: {
