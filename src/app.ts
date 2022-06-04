@@ -12,6 +12,7 @@ import {
 } from "@nutui/nutui-taro";
 
 import "./app.scss";
+import "./assets/font/iconfont.css";
 
 const App = createApp({
   onShow(options) {},
@@ -27,5 +28,4 @@ App.use(Form)
   .use(Avatar)
   .use(List)
   .use(Icon);
-
 export default App;

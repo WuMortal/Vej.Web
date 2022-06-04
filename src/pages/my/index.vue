@@ -7,20 +7,30 @@
     <view class="function">
       <ul class="function-list">
         <li class="function-list-item">
-          <view>
-            <text>我的订单</text>
+          <view class="function-list-item-text">
+            <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="accountbook" />
+            <text>我的记账</text>
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
         </li>
         <li class="function-list-item">
-          <view>
-            <text>我的订单</text>
+          <view class="function-list-item-text">
+            <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="lianxiren" />
+            <text>联系人管理</text>
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
         </li>
         <li class="function-list-item">
-          <view>
-            <text>我的订单</text>
+          <view class="function-list-item-text">
+            <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="mendian" />
+            <text>公司/门店管理</text>
+          </view>
+          <nut-icon class="function-list-item-icon" name="right"></nut-icon>
+        </li>
+        <li class="function-list-item">
+          <view class="function-list-item-text">
+            <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="cialiao" />
+            <text>商品/材料管理</text>
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
         </li>
@@ -59,37 +69,46 @@ page {
 }
 
 .user-info {
-  padding-top: 20rpx;
+  padding-top: 15px;
   background-color: #fa2a27;
   color: #fff;
   height: 110px;
   &-name {
-    width: 200rpx;
-    margin: 15rpx auto;
+    width: 90px;
+    margin: 5px auto;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 }
 
+$list-item-height: 28px;
 .function {
-  padding-top: 10rpx;
-  height: calc(100% - 120px);
+  padding-top: 10px;
+  height: calc(100% - 125px);
   background-color: #f7f7f7;
   &-list {
     &-item {
-      height: 70rpx;
-      line-height: 70rpx;
+      height: $list-item-height;
+      line-height: $list-item-height;
       text-align: left;
       background-color: #fff;
-      padding: 10rpx 15rpx;
+      padding: 10px 10px;
       border-bottom: 1px #f7f7f7 solid;
       display: flex;
       flex-direction: row;
       align-content: center;
       justify-content: space-between;
 
+      &-text {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        height: 100%;
+      }
       &-icon {
-        height: 70rpx;
+        height: $list-item-height !important;
+        line-height: $list-item-height;
+        padding: 0 5px;
       }
 
       &:hover {

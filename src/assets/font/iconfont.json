@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1137833",
+      "name": "门店",
+      "font_class": "mendian",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
+      "icon_id": "1964734",
+      "name": "联系人",
+      "font_class": "lianxiren",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "5703306",
+      "name": "材料",
+      "font_class": "cialiao",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "16617885",
+      "name": "account book",
+      "font_class": "accountbook",
+      "unicode": "e692",
+      "unicode_decimal": 59026
+    }
+  ]
+}
