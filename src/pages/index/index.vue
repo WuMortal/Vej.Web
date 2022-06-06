@@ -18,6 +18,7 @@
       <nut-infiniteloading containerId="scroll" load-icon="loading" pull-icon="loading" :use-window="false" :has-more="hasMore" @load-more="loadMore">
         <li class="infiniteLi" v-for="(item, index) in [1,12,1,1,1,,1,1,1,1,1,1,12,1,1,1,,1,1,1,1,12,1,1,1,,1,1,1,1,1,1,1,1,1,1,,1,1,1,1,1,1]" :key="index">{{item}}</li>
       </nut-infiniteloading>
+      <nut-button type="primary" icon="edit" class="orders-create">记一笔</nut-button>
     </view>
   </view>
 </template>
@@ -92,9 +93,16 @@ function getCurrentDateDes(year, month) {
 }
 
 .orders {
-  height: calc(100% - 120px);
+  height: calc(100% - 130px);
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  position: relative;
+  &-create {
+    position: absolute;
+    text-align: right;
+    bottom: 36px;
+    right: 20px;
+  }
 }
 </style>
