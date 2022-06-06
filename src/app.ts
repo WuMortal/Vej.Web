@@ -4,10 +4,16 @@ import {
   Button,
   Cell,
   CellGroup,
+  DatePicker,
   Form,
   FormItem,
+  Grid,
+  GridItem,
   Icon,
+  InfiniteLoading,
   List,
+  Picker,
+  Popup,
   Toast,
 } from "@nutui/nutui-taro";
 
@@ -27,5 +33,11 @@ App.use(Form)
   .use(Toast)
   .use(Avatar)
   .use(List)
-  .use(Icon);
+  .use(Icon)
+  .use(DatePicker)
+  .use(Picker)
+  .use(Popup)
+  .use(Grid)
+  .use(GridItem)
+  .use(InfiniteLoading);
 export default App;

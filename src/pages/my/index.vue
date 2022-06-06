@@ -1,15 +1,15 @@
 <template>
   <view class="index">
-    <view class="user-info">
-      <nut-avatar class="user-info-avatar" size="large" icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"></nut-avatar>
-      <view class="user-info-name">WigorWigorWigorWigorWigorWigorWigorWigor</view>
+    <view class="info">
+      <nut-avatar class="info-avatar" size="large" icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"></nut-avatar>
+      <view class="info-name">WigorWigorWigorWigorWigorWigorWigorWigor</view>
     </view>
     <view class="function">
       <ul class="function-list">
         <li class="function-list-item">
           <view class="function-list-item-text">
             <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="accountbook" />
-            <text>我的记账</text>
+            <text style="line-height:29px">我的记账</text>
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
         </li>
@@ -29,7 +29,7 @@
         </li>
         <li class="function-list-item">
           <view class="function-list-item-text">
-            <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="cialiao" />
+            <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="cailiao" />
             <text>商品/材料管理</text>
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
@@ -39,6 +39,7 @@
   </view>
 </template>
 <script lang="ts" setup>
+import "../../assets/css/common.scss";
 import { reactive } from "vue";
 const state = reactive({
   msg: "欢迎使用 NutUI3.0 开发小程序",
@@ -56,23 +57,8 @@ const handleClick = (type, msg, cover = false) => {
 };
 </script>
 <style lang="scss">
-page {
-  height: 100%;
-}
-
-.index {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.info {
   text-align: center;
-  height: 100%;
-}
-
-.user-info {
-  padding-top: 15px;
-  background-color: #fa2a27;
-  color: #fff;
-  height: 110px;
   &-name {
     width: 90px;
     margin: 5px auto;
@@ -85,7 +71,6 @@ $list-item-height: 28px;
 .function {
   padding-top: 10px;
   height: calc(100% - 125px);
-  background-color: #f7f7f7;
   &-list {
     &-item {
       height: $list-item-height;

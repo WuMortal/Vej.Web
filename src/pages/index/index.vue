@@ -1,52 +1,100 @@
 <template>
   <view class="index">
-    <view>
-      <img src="" alt="">
+    <view class="info">
+      <nut-grid class="info-overview" :column-num="4">
+        <nut-grid-item class="info-overview-item" v-for="info in overviewInfo" :key="info.text">
+          <text class="info-overview-item-val" :style="info.valStyle">{{ info.value }}</text>
+          <text class="info-overview-item-text" :style="info.textStyle">{{ info.text }}</text>
+        </nut-grid-item>
+      </nut-grid>
+      <view class="info-date" @click="show = true">
+        <nut-icon class="info-date-icon" name="date"></nut-icon>
+        <text>{{ dateDescRef }}</text>
+        <nut-icon font-class-name="iconfont" class-prefix="icon" class="info-date-icon" name="caretDown"></nut-icon>
+      </view>
+      <nut-datepicker type="year-month" v-model="currentDate" v-model:visible="show" :min-date="minDate" :max-date="maxDate" :is-show-chinese="true" @confirm="confirm"></nut-datepicker>
     </view>
-    {{ msg }}
-    <view class="btn">
-      <nut-button type="primary" @click="handleClick('text', msg2, true)">点我</nut-button>
+    <view id="scroll" class="orders" style="height: calc(100% - 120px);">
+      <nut-infiniteloading containerId="scroll" load-icon="loading" pull-icon="loading" :use-window="false" :has-more="hasMore" @load-more="loadMore">
+        <li class="infiniteLi" v-for="(item, index) in [1,12,1,1,1,,1,1,1,1,1,1,12,1,1,1,,1,1,1,1,12,1,1,1,,1,1,1,1,1,1,1,1,1,1,,1,1,1,1,1,1]" :key="index">{{item}}</li>
+      </nut-infiniteloading>
     </view>
-    <nut-toast :msg="msg" v-model:visible="show" :type="type" :cover="cover" />
   </view>
 </template>
 
-<script>
-import { reactive, toRefs } from 'vue';
-export default {
-  name: 'Index',
-  components: {
-    
+<script lang="ts" setup>
+import { ref } from "vue";
+import "../../assets/css/common.scss";
+
+const overviewInfo = [
+  {
+    text: "本月总额",
+    value: "￥8888.11",
+    textStyle: "font-size:15px;",
+    valStyle: "font-size:13px;font-weight: bold;",
   },
-  setup(){
-    const state = reactive({
-      msg: '欢迎使用 NutUI3.0 开发小程序',
-      msg2: '你成功了～',
-      type: 'text',
-      show: false,
-      cover: false
-    });
+  { text: "已完成订单", value: 0 },
+  { text: "未完成订单", value: 0 },
+  { text: "待结清订单", value: 0 },
+];
+const show = ref(false);
+const currentDate = new Date();
+const minDate = new Date(2018, 0, 1);
+const maxDate = new Date(currentDate.getFullYear(), 11, 1);
+const dateDescRef = ref(
+  getCurrentDateDes(currentDate.getFullYear(), currentDate.getMonth() + 1)
+);
 
-    const handleClick = (type, msg, cover = false) => {
-      state.show = true;
-      state.msg2 = msg;
-      state.type = type;
-      state.cover = cover;
-    };
+const confirm = ({ selectedValue, selectedOptions }) => {
+  dateDescRef.value = getCurrentDateDes(selectedValue[0], selectedValue[1]);
+};
 
-    return {
-      ...toRefs(state),
-      handleClick
-    }
-  }
+function getCurrentDateDes(year, month) {
+  return `${year}年${month}月`;
 }
 </script>
 
 <style lang="scss">
-.index {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+.info {
+  text-align: left;
+  &-overview {
+    height: calc(100% - 40px);
+    border: 0px;
+    &-item {
+      &-text {
+        font-size: 12px;
+        font-weight: bold;
+        margin-top: 8px;
+      }
+      &-val {
+        font-size: 11px;
+        width: 70px;
+        overflow: hidden;
+        text-align: center;
+        text-overflow: ellipsis;
+      }
+      & view {
+        background-color: #fa2a27;
+        border: 0px;
+      }
+    }
+  }
+  &-date {
+    display: flex;
+    width: 150px;
+    margin: 10px 0px;
+    line-height: 20px;
+    font-size: 12px;
+    &-icon {
+      margin: 0 1px;
+    }
+  }
+}
+
+.orders {
+  height: calc(100% - 120px);
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 </style>
