@@ -1,5 +1,15 @@
 export default defineAppConfig({
-  pages: ["pages/index/index", "pages/my/index", "pages/statistics/index"],
+  pages: [
+    "pages/index/index",
+    "pages/my/index",
+    "pages/statistics/index",
+    "pages/user/user_info",
+    "pages/account_book/my_account_book",
+    "pages/contact/index",
+    "pages/company/index",
+    "pages/goods/index",
+    "pages/utils/feedback",
+  ],
   tabBar: {
     selectedColor: "#e32219",
     list: [

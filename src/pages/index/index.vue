@@ -14,11 +14,11 @@
       </view>
       <nut-datepicker type="year-month" v-model="currentDate" v-model:visible="show" :min-date="minDate" :max-date="maxDate" :is-show-chinese="true" @confirm="confirm"></nut-datepicker>
     </view>
-    <view id="scroll" class="orders" style="height: calc(100% - 120px);">
+    <view id="scroll" class="accountbook" style="height: calc(100% - 120px);">
       <nut-infiniteloading containerId="scroll" load-icon="loading" pull-icon="loading" :use-window="false" :has-more="hasMore" @load-more="loadMore">
         <li class="infiniteLi" v-for="(item, index) in [1,12,1,1,1,,1,1,1,1,1,1,12,1,1,1,,1,1,1,1,12,1,1,1,,1,1,1,1,1,1,1,1,1,1,,1,1,1,1,1,1]" :key="index">{{item}}</li>
       </nut-infiniteloading>
-      <nut-button type="primary" icon="edit" class="orders-create">记一笔</nut-button>
+      <nut-button type="primary" icon="edit" class="accountbook-create">记一笔</nut-button>
     </view>
   </view>
 </template>
@@ -34,9 +34,9 @@ const overviewInfo = [
     textStyle: "font-size:15px;",
     valStyle: "font-size:13px;font-weight: bold;",
   },
-  { text: "已完成订单", value: 0 },
-  { text: "未完成订单", value: 0 },
-  { text: "待结清订单", value: 0 },
+  { text: "已完成单", value: 0 },
+  { text: "未完成单", value: 0 },
+  { text: "待结清单", value: 0 },
 ];
 const show = ref(false);
 const currentDate = new Date();
@@ -93,7 +93,7 @@ function getCurrentDateDes(year, month) {
   }
 }
 
-.orders {
+.accountbook {
   height: calc(100% - 110px);
   width: 100%;
   overflow-y: auto;

@@ -6,31 +6,46 @@
     </view>
     <view class="function">
       <ul class="function-list">
-        <li class="function-list-item">
+        <li class="function-list-item" @click="()=>{Taro.navigateTo({url:'/pages/user/user_info'})}">
           <view class="function-list-item-text">
-            <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="accountbook" />
-            <text style="line-height:29px">我的记账</text>
+            <nut-icon class="function-list-item-icon" name="my" />
+            <text>我的资料</text>
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
         </li>
-        <li class="function-list-item">
+        <li class="function-list-item" @click="()=>{Taro.navigateTo({url:'/pages/account_book/my_account_book'})}">
+          <view class="function-list-item-text">
+            <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="accountbook" />
+            <text style="line-height:29px">我的账簿</text>
+          </view>
+          <nut-icon class="function-list-item-icon" name="right"></nut-icon>
+        </li>
+
+        <li class="function-list-item" @click="()=>{Taro.navigateTo({url:'/pages/contact/index'})}">
           <view class="function-list-item-text">
             <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="lianxiren" />
             <text>联系人管理</text>
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
         </li>
-        <li class="function-list-item">
+        <li class="function-list-item" @click="()=>{Taro.navigateTo({url:'/pages/company/index'})}">
           <view class="function-list-item-text">
             <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="mendian" />
-            <text>公司/门店管理</text>
+            <text>联系公司/门店管理</text>
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
         </li>
-        <li class="function-list-item">
+        <li class="function-list-item" @click="()=>{Taro.navigateTo({url:'/pages/company/index'})}">
           <view class="function-list-item-text">
             <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="cailiao" />
-            <text>商品/材料管理</text>
+            <text>商品/耗材管理</text>
+          </view>
+          <nut-icon class="function-list-item-icon" name="right"></nut-icon>
+        </li>
+        <li class="function-list-item" @click="()=>{Taro.navigateTo({url:'/pages/utils/feedback'})}">
+          <view class="function-list-item-text">
+            <nut-icon class="function-list-item-icon" name="message" />
+            <text>反馈/建议</text>
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
         </li>
@@ -43,20 +58,6 @@ import "../../assets/css/common.scss";
 import "../../assets/images/default_avatar.png";
 import { reactive } from "vue";
 import Taro from "@tarojs/taro";
-const state = reactive({
-  msg: "欢迎使用 NutUI3.0 开发小程序",
-  msg2: "你成功了～",
-  type: "text",
-  show: false,
-  cover: false,
-});
-
-const handleClick = (type, msg, cover = false) => {
-  state.show = true;
-  state.msg2 = msg;
-  state.type = type;
-  state.cover = cover;
-};
 
 const loginHandle = () => {
   Taro.login({
@@ -92,6 +93,7 @@ $list-item-height: 28px;
 .function {
   padding-top: 10px;
   height: calc(100% - 125px);
+  overflow-y: auto;
   &-list {
     &-item {
       height: $list-item-height;
@@ -117,7 +119,7 @@ $list-item-height: 28px;
         padding: 0 5px;
       }
 
-      &:hover {
+      &:active {
         background-color: #f7f7f7;
       }
     }
