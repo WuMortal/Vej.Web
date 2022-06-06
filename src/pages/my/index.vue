@@ -70,7 +70,7 @@ const handleClick = (type, msg, cover = false) => {
 $list-item-height: 28px;
 .function {
   padding-top: 10px;
-  height: calc(100% - 135px);
+  height: calc(100% - 125px);
   &-list {
     &-item {
       height: $list-item-height;

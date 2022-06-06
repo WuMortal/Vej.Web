@@ -59,7 +59,7 @@ function getCurrentDateDes(year, month) {
 .info {
   text-align: left;
   &-overview {
-    height: calc(100% - 40px);
+    height: calc(100% - 32px);
     border: 0px;
     &-item {
       &-text {
@@ -83,8 +83,9 @@ function getCurrentDateDes(year, month) {
   &-date {
     display: flex;
     width: 150px;
-    margin: 10px 0px;
+    margin: 6px 0px;
     line-height: 20px;
+    height: 20px;
     font-size: 12px;
     &-icon {
       margin: 0 1px;
@@ -93,7 +94,7 @@ function getCurrentDateDes(year, month) {
 }
 
 .orders {
-  height: calc(100% - 130px);
+  height: calc(100% - 110px);
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
