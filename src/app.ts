@@ -12,8 +12,10 @@ import {
   Icon,
   InfiniteLoading,
   List,
+  OverLay,
   Picker,
   Popup,
+  Tag,
   Toast,
 } from "@nutui/nutui-taro";
 
@@ -39,5 +41,7 @@ App.use(Form)
   .use(Popup)
   .use(Grid)
   .use(GridItem)
-  .use(InfiniteLoading);
+  .use(InfiniteLoading)
+  .use(Tag)
+  .use(OverLay);
 export default App;

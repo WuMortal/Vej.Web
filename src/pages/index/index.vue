@@ -12,20 +12,24 @@
         <text>{{ dateDescRef }}</text>
         <nut-icon font-class-name="iconfont" class-prefix="icon" class="info-date-icon" name="caretDown"></nut-icon>
       </view>
-      <nut-datepicker type="year-month" v-model="currentDate" v-model:visible="show" :min-date="minDate" :max-date="maxDate" :is-show-chinese="true" @confirm="confirm"></nut-datepicker>
     </view>
     <view id="scroll" class="accountbook" style="height: calc(100% - 120px);">
       <nut-infiniteloading containerId="scroll" load-icon="loading" pull-icon="loading" :use-window="false" :has-more="hasMore" @load-more="loadMore">
-        <li class="infiniteLi" v-for="(item, index) in [1,12,1,1,1,,1,1,1,1,1,1,12,1,1,1,,1,1,1,1,12,1,1,1,,1,1,1,1,1,1,1,1,1,1,,1,1,1,1,1,1]" :key="index">{{item}}</li>
+        <accountBookItem :dateDesc="'6月6日 今天'" :amountType="AmountType.Income" :amount="123.123" />
+        <accountBookItem :dateDesc="'6月5日 昨天'" :amountType="AmountType.Expenses" :amount="123.111111123" />
       </nut-infiniteloading>
-      <nut-button type="primary" icon="edit" class="accountbook-create">记一笔</nut-button>
+      <nut-button @click="()=>{Taro.navigateTo({url:'/pages/account_book/account_book_record'})}" type="primary" icon="edit" class="accountbook-create">记一笔</nut-button>
     </view>
+    <nut-datepicker type="year-month" v-model="currentDate" v-model:visible="show" :min-date="minDate" :max-date="maxDate" :is-show-chinese="true" @confirm="confirm" />
   </view>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 import "../../assets/css/common.scss";
+import Taro from "@tarojs/taro";
+import { ref } from "vue";
+import accountBookItem from "../../components/account_book_item/account_book_item.vue";
+import { AmountType } from "../../components/account_book_item/props";
 
 const overviewInfo = [
   {
@@ -94,7 +98,7 @@ function getCurrentDateDes(year, month) {
 }
 
 .accountbook {
-  height: calc(100% - 110px);
+  height: calc(100% - 120px);
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;

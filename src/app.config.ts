@@ -5,6 +5,7 @@ export default defineAppConfig({
     "pages/statistics/index",
     "pages/user/user_info",
     "pages/account_book/my_account_book",
+    "pages/account_book/account_book_record",
     "pages/contact/index",
     "pages/company/index",
     "pages/goods/index",

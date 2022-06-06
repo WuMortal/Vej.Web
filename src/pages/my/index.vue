@@ -56,7 +56,6 @@
 <script lang="ts" setup>
 import "../../assets/css/common.scss";
 import "../../assets/images/default_avatar.png";
-import { reactive } from "vue";
 import Taro from "@tarojs/taro";
 
 const loginHandle = () => {
