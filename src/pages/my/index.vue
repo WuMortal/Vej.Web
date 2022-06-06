@@ -1,8 +1,8 @@
 <template>
   <view class="index">
     <view class="info">
-      <nut-avatar class="info-avatar" size="large" icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"></nut-avatar>
-      <view class="info-name">WigorWigorWigorWigorWigorWigorWigorWigor</view>
+      <nut-avatar @click="loginHandle()" class="info-avatar" size="large" icon="../../assets/images/default_avatar.png"></nut-avatar>
+      <view class="info-name">点击头像登录</view>
     </view>
     <view class="function">
       <ul class="function-list">
@@ -40,7 +40,9 @@
 </template>
 <script lang="ts" setup>
 import "../../assets/css/common.scss";
+import "../../assets/images/default_avatar.png";
 import { reactive } from "vue";
+import Taro from "@tarojs/taro";
 const state = reactive({
   msg: "欢迎使用 NutUI3.0 开发小程序",
   msg2: "你成功了～",
@@ -55,12 +57,31 @@ const handleClick = (type, msg, cover = false) => {
   state.type = type;
   state.cover = cover;
 };
+
+const loginHandle = () => {
+  Taro.login({
+    success: function (res) {
+      if (res.code) {
+        //发起网络请求
+        Taro.request({
+          url: "https://vej-api.amortal.cn/api/account/wechatLogin",
+          data: {
+            code: res.code,
+          },
+        });
+      } else {
+        console.log("登录失败！" + res.errMsg);
+      }
+    },
+  });
+};
 </script>
 <style lang="scss">
 .info {
   text-align: center;
   &-name {
     width: 90px;
+    font-size: 14px;
     margin: 5px auto;
     overflow: hidden;
     text-overflow: ellipsis;
