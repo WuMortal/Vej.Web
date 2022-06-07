@@ -8,12 +8,12 @@ export const basicProps = {
     type: String,
     default: "-",
   },
-  amountType: {
-    type: Number,
-    default: 0,
+  incomeAmount: {
+    type: String,
+    default: "-",
   },
-  amount: {
-    type: Number,
-    default: 0.0,
+  expensesAmount: {
+    type: String,
+    default: "-",
   },
 };

@@ -3,9 +3,11 @@
     <view class="item-title">
       <text>{{ props.dateDesc }}</text>
       <view class="item-title-amount">
-        <nut-tag v-if="props.amountType == AmountType.Income" type="success">入</nut-tag>
-        <nut-tag v-else-if="props.amountType == AmountType.Expenses" type="warning">出</nut-tag>
-        <view class="item-title-amount-number">{{'￥'+ props.amount }}</view>
+        <nut-tag type="success">入</nut-tag>
+        <view class="item-title-amount-number">{{ props.incomeAmount }}</view>
+
+        <nut-tag type="warning">出</nut-tag>
+        <view class="item-title-amount-number">{{ props.expensesAmount }}</view>
       </view>
     </view>
     <view class="item-content">123123</view>
@@ -33,15 +35,15 @@ const props = defineProps({ ...basicProps });
     justify-content: space-between;
     align-items: center;
     font-size: 15px;
-    text-align: right;
+    text-align: center;
     font-weight: bold;
     &-amount {
-      font-size: 13px;
+      font-size: 12px;
       display: flex;
-      width: 100px;
-      font-weight: 550;
+      width: 160px;
+      font-weight: 450;
       &-number {
-        width: 90px;
+        width: 60px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;

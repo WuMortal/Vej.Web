@@ -15,7 +15,7 @@
     </view>
     <view id="scroll" class="accountbook" style="height: calc(100% - 120px);">
       <nut-infiniteloading containerId="scroll" load-icon="loading" pull-icon="loading" :use-window="false" :has-more="hasMore" @load-more="loadMore">
-        <accountBookItem :dateDesc="'6月6日 今天'" :amountType="AmountType.Income" :amount="123.123" />
+        <accountBookItem :dateDesc="'6月6日 今天'" :incomeAmount="123.1231111" :expensesAmount="123.123" />
         <accountBookItem :dateDesc="'6月5日 昨天'" :amountType="AmountType.Expenses" :amount="123.111111123" />
       </nut-infiniteloading>
       <nut-button @click="()=>{Taro.navigateTo({url:'/pages/account_book/account_book_record'})}" type="primary" icon="edit" class="accountbook-create">记一笔</nut-button>
