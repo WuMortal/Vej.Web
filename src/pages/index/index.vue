@@ -38,9 +38,9 @@ const overviewInfo = [
     textStyle: "font-size:15px;",
     valStyle: "font-size:13px;font-weight: bold;",
   },
-  { text: "已完成单", value: 0 },
-  { text: "未完成单", value: 0 },
-  { text: "待结清单", value: 0 },
+  { text: "已结清账目", value: 0 },
+  { text: "待结清账目", value: 0 },
+  { text: "预先记录账目", value: 0 },
 ];
 const show = ref(false);
 const currentDate = new Date();
