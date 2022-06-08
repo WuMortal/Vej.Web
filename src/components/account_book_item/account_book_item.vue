@@ -15,7 +15,9 @@
         <view class="item-content-summary-text">
           <view>老王家的空调维修</view>
           <view class="item-content-summary-info">
-            <view>10:22</view>
+            <view>10:22</view>|
+            <view>王de凤</view>|
+            <view>这个是备注要这个是备注要这个是备注要这个是备注要这个是备注要</view>
           </view>
         </view>
         <view class="item-content-summary-amount">+ 100</view>
@@ -109,6 +111,19 @@ const props = defineProps({ ...basicProps });
         font-size: 11px;
         margin-top: 20px;
         color: #222;
+        display: flex;
+        width: 100%;
+        & view {
+          &:first-child {
+            margin-left: 0px;
+          }
+          &:last-child {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          margin: 0px 3px;
+        }
       }
       &:active {
         background-color: #fbfbfb;
