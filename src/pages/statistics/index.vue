@@ -1,23 +1,134 @@
+// 柱状图
 <template>
-  <view class="index">
-    <view class="info">
-      <nut-cell title="显示中文" :desc="desc" @click="show = true"></nut-cell>
-      <nut-datepicker type="year-month" v-model="currentDate" v-model:visible="show" :min-date="minDate" :max-date="currentDate" :is-show-chinese="true" @confirm="confirm"></nut-datepicker>
-    </view>
+  <view class="bar-chart">
+    <l-echart ref="chart" style="width: 100%; height:500rpx"></l-echart>
   </view>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import "../../assets/css/common.scss";
-const show = ref(false);
-const desc = ref("2022年05月10日");
-const minDate = new Date(2020, 0, 1);
-const currentDate = new Date();
-const confirm = ({ selectedValue, selectedOptions }) => {
-  desc.value = selectedOptions.map((option) => option.text).join("");
+import { ref, onMounted } from "vue";
+import LEchart from "@/components/lime-echart";
+
+// 按需引入
+import * as echarts from "echarts/core";
+import { LineChart, BarChart } from "echarts/charts";
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  LegendComponent,
+} from "echarts/components";
+// 标签自动布局，全局过渡动画等特性
+import { LabelLayout, UniversalTransition } from "echarts/features";
+// 引入 Canvas 渲染器，注意引入 CanvasRenderer 是必须的一步
+import { CanvasRenderer } from "echarts/renderers";
+
+// 注册必须的组件
+echarts.use([
+  LegendComponent,
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  BarChart,
+  LineChart,
+  LabelLayout,
+  UniversalTransition,
+  CanvasRenderer,
+]);
+//-------------------------------------
+
+const option = {
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {
+      type: "shadow",
+    },
+    confine: true,
+  },
+  legend: {
+    data: ["热度", "正面", "负面"],
+  },
+  grid: {
+    left: 20,
+    right: 20,
+    bottom: 15,
+    top: 40,
+    containLabel: true,
+  },
+  xAxis: [
+    {
+      type: "value",
+      axisLine: {
+        lineStyle: {
+          color: "#999999",
+        },
+      },
+      axisLabel: {
+        color: "#666666",
+      },
+    },
+  ],
+  yAxis: [
+    {
+      type: "category",
+      axisTick: { show: false },
+      data: [
+        "汽车之家",
+        "今日头条",
+        "百度贴吧",
+        "一点资讯",
+        "微信",
+        "微博",
+        "知乎",
+      ],
+      axisLine: {
+        lineStyle: {
+          color: "#999999",
+        },
+      },
+      axisLabel: {
+        color: "#666666",
+      },
+    },
+  ],
+  series: [
+    {
+      name: "热度",
+      type: "bar",
+      data: [300, 270, 340, 344, 300, 320, 310],
+    },
+    {
+      name: "正面",
+      type: "bar",
+      stack: "总量",
+      data: [120, 102, 141, 174, 190, 250, 220],
+    },
+    {
+      name: "负面",
+      type: "bar",
+      stack: "总量",
+      data: [-20, -32, -21, -34, -90, -130, -110],
+    },
+  ],
 };
+
+const chart = ref(null);
+onMounted(() => {
+  if (chart.value) {
+    chart.value.init(echarts, (chart) => {
+      chart.setOption(option);
+    });
+  }
+});
 </script>
 
-<style lang="scss">
+<style>
+.bar-chart {
+  width: 100%;
+  height: 100vh;
+}
 </style>

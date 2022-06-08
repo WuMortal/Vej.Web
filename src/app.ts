@@ -5,6 +5,7 @@ import {
   Cell,
   CellGroup,
   DatePicker,
+  Elevator,
   Form,
   FormItem,
   Grid,
@@ -15,6 +16,7 @@ import {
   OverLay,
   Picker,
   Popup,
+  SearchBar,
   Tag,
   Toast,
 } from "@nutui/nutui-taro";
@@ -43,5 +45,7 @@ App.use(Form)
   .use(GridItem)
   .use(InfiniteLoading)
   .use(Tag)
-  .use(OverLay);
+  .use(OverLay)
+  .use(Elevator)
+  .use(SearchBar);
 export default App;
