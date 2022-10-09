@@ -2,25 +2,84 @@
   <view class="index">
     <view class="info">
       <nut-grid class="info-overview" :column-num="4">
-        <nut-grid-item class="info-overview-item" v-for="info in overviewInfo" :key="info.text">
-          <text class="info-overview-item-val" :style="info.valStyle">{{ info.value }}</text>
-          <text class="info-overview-item-text" :style="info.textStyle">{{ info.text }}</text>
+        <nut-grid-item
+          class="info-overview-item"
+          v-for="info in overviewInfo"
+          :key="info.text"
+        >
+          <text class="info-overview-item-val" :style="info.valStyle">{{
+            info.value
+          }}</text>
+          <text class="info-overview-item-text" :style="info.textStyle">{{
+            info.text
+          }}</text>
         </nut-grid-item>
       </nut-grid>
       <view class="info-date" @click="show = true">
         <nut-icon class="info-date-icon" name="date"></nut-icon>
         <text>{{ dateDescRef }}</text>
-        <nut-icon font-class-name="iconfont" class-prefix="icon" class="info-date-icon" name="caretDown"></nut-icon>
+        <nut-icon
+          font-class-name="iconfont"
+          class-prefix="icon"
+          class="info-date-icon"
+          name="caretDown"
+        ></nut-icon>
       </view>
     </view>
-    <view id="scroll" class="accountbook" style="height: calc(100% - 120px);">
-      <nut-infiniteloading containerId="scroll" load-icon="loading" pull-icon="loading" :use-window="false" :has-more="hasMore" @load-more="loadMore">
-        <accountBookItem :dateDesc="'6月6日 今天'" :incomeAmount="123.1231111" :expensesAmount="123.123" />
-        <accountBookItem :dateDesc="'6月5日 昨天'" :amountType="AmountType.Expenses" :amount="123.111111123" />
+    <view id="scroll" class="accountbook" style="height: calc(100% - 120px)">
+      <nut-infiniteloading
+        containerId="scroll"
+        load-icon="loading"
+        pull-icon="loading"
+        :use-window="false"
+        :has-more="hasMore"
+        @load-more="loadMore"
+      >
+        <accountBookItem
+          :dateDesc="'6月6日 今天'"
+          :incomeAmount="123.1231111"
+          :expensesAmount="123.123"
+        />
+        <accountBookItem
+          :dateDesc="'6月5日 昨天'"
+          :amountType="AmountType.Expenses"
+          :amount="123.111111123"
+        />
       </nut-infiniteloading>
-      <nut-button @click="()=>{Taro.navigateTo({url:'/pages/account_book/account_book_record'})}" type="primary" icon="edit" class="accountbook-create">记一笔</nut-button>
+      <nut-button
+        @click="
+          () => {
+            showBasic = true;
+            // Taro.navigateTo({ url: '/pages/account_book/account_book_record' });
+          }
+        "
+        type="primary"
+        icon="edit"
+        class="accountbook-create"
+        >记一笔</nut-button
+      >
     </view>
-    <nut-datepicker type="year-month" v-model="currentDate" v-model:visible="show" :min-date="minDate" :max-date="maxDate" :is-show-chinese="true" @confirm="confirm" />
+    <nut-datepicker
+      type="year-month"
+      v-model="currentDate"
+      v-model:visible="show"
+      :min-date="minDate"
+      :max-date="maxDate"
+      :is-show-chinese="true"
+      @confirm="confirm"
+    />
+    <nut-popup
+      pop-class="popclass"
+      position="bottom"
+      closeable
+      close-icon-position="top-left"
+      close-icon="close"
+      round
+      :style="{ height: '70%' }"
+      v-model:visible="showBasic"
+      :z-index="100"
+      ><record />
+    </nut-popup>
   </view>
 </template>
 
@@ -30,6 +89,8 @@ import Taro from "@tarojs/taro";
 import { ref } from "vue";
 import accountBookItem from "../../components/account_book_item/account_book_item.vue";
 import { AmountType } from "../../components/account_book_item/props";
+import { Popup, OverLay } from "@nutui/nutui-taro";
+import record from "../../components/record.vue";
 
 const overviewInfo = [
   {
@@ -43,6 +104,7 @@ const overviewInfo = [
   { text: "预先记录账目", value: 0 },
 ];
 const show = ref(false);
+const showBasic = ref(false);
 const currentDate = new Date();
 const minDate = new Date(2018, 0, 1);
 const maxDate = new Date(currentDate.getFullYear(), 11, 1);
