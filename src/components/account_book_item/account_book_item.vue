@@ -44,7 +44,8 @@
   </view>
 </template>
 <script lang="ts" setup>
-import { basicProps, AmountType } from "./props";
+import { basicProps } from "./props";
+import { AmountType } from "../props";
 const props = defineProps({ ...basicProps });
 </script>
 

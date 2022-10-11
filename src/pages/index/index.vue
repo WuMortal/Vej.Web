@@ -88,7 +88,7 @@ import "../../assets/css/common.scss";
 import Taro from "@tarojs/taro";
 import { ref } from "vue";
 import accountBookItem from "../../components/account_book_item/account_book_item.vue";
-import { AmountType } from "../../components/account_book_item/props";
+import { AmountType } from "../../components/props";
 import { Popup, OverLay } from "@nutui/nutui-taro";
 import record from "../../components/record.vue";
 
