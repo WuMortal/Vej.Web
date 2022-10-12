@@ -2,24 +2,19 @@ import { createApp } from "vue";
 import {
   Avatar,
   Button,
-  Cell,
-  CellGroup,
+  Cell, CellGroup,
   DatePicker,
   Elevator,
-  Form,
-  FormItem,
-  Grid,
-  GridItem,
+  Form, FormItem,
+  Grid, GridItem,
   Icon,
   InfiniteLoading,
   List,
   OverLay,
   Picker,
   Popup,
-  SearchBar,
-  Tag,
-  Toast,
-  Input
+  SearchBar, Tag, Toast,
+  Input, Radio, RadioGroup, TextArea
 } from "@nutui/nutui-taro";
 
 import "./app.scss";
@@ -49,5 +44,8 @@ App.use(Form)
   .use(OverLay)
   .use(Elevator)
   .use(SearchBar)
-  .use(Input);
+  .use(Input)
+  .use(Radio)
+  .use(TextArea)
+  .use(RadioGroup);
 export default App;

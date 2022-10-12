@@ -75,7 +75,7 @@
       close-icon-position="top-left"
       close-icon="close"
       round
-      :style="{ height: '70%' }"
+      :style="{ height: '80%' }"
       v-model:visible="showBasic"
       :z-index="100"
       ><record />

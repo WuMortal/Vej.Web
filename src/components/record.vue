@@ -25,7 +25,39 @@
       </view>
     </view>
     <view class="record-content">
-      <nut-input label="￥" placeholder="" type="number" />
+      <view class="record-content-amount">
+        <view>￥</view>
+        <input
+          required
+          inputmode="decimal"
+          maxlength="9"
+          type="digit"
+          placeholder=""
+        />
+      </view>
+
+      <nut-form>
+        <nut-form-item label="姓名">
+          <input class="nut-input-text" placeholder="请输入姓名" type="text" />
+        </nut-form-item>
+        <nut-form-item label="联系电话">
+          <input
+            class="nut-input-text"
+            placeholder="请输入联系电话"
+            type="text"
+          />
+        </nut-form-item>
+        <nut-form-item label="账目类型">
+          <nut-radiogroup direction="horizontal">
+            <nut-radio shape="button" label="1">已结</nut-radio>
+            <nut-radio shape="button" label="2">待结</nut-radio>
+            <nut-radio shape="button" label="3">预记</nut-radio>
+          </nut-radiogroup>
+        </nut-form-item>
+        <nut-form-item label="备注">
+          <nut-textarea placeholder="请输入备注" type="text" />
+        </nut-form-item>
+      </nut-form>
     </view>
   </view>
 
@@ -40,12 +72,24 @@
   />
 </template>
 <script lang="ts" setup>
-import { Input, Icon, Grid, GridItem, Popup } from "@nutui/nutui-taro";
+import {
+  Input,
+  Icon,
+  Grid,
+  GridItem,
+  Popup,
+  Form,
+  FormItem,
+  Cell,
+  CellGroup,
+  Rradio,
+  RadioGroup,
+  TextArea,
+} from "@nutui/nutui-taro";
 import { ref } from "vue";
 import { AmountType } from "./props";
 
 const showDate = ref(false);
-const showKeyBoard = ref(true);
 const currentDate = new Date();
 const minDate = new Date(2018, 0, 1);
 const maxDate = new Date(
@@ -120,6 +164,27 @@ const dataConfirm = ({ selectedValue, selectedOptions }) => {
   }
   &-content {
     height: 100%;
+    &-amount {
+      font-weight: bold;
+      font-size: 36px;
+      width: 100%;
+      padding: 20px 0px 10px 0px;
+      margin-bottom: 10px;
+      border-bottom: #e5e5e5 1px solid;
+      display: flex;
+      justify-content: space-between;
+      & > view {
+        width: 30px;
+      }
+
+      & > input {
+        margin-left: 16px;
+        width: 100%;
+        height: 47px;
+        line-height: 47px;
+        text-align: left;
+      }
+    }
   }
 }
 </style>
