@@ -183,7 +183,7 @@ const dataConfirm = ({ selectedValue, selectedOptions }) => {
     &-info {
       height: 100%;
       & .nut-cell {
-        padding: 13px 0px !important;
+        // padding: 13px 0px !important;
       }
     }
   }

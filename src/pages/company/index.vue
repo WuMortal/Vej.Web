@@ -1,54 +1,24 @@
 <template>
   <view class="container">
     <view class="company-info">
-      <nut-elevator
-        :index-list="dataList"
-        :height="'100%'"
-        @click-item="clickItem"
-        @click-index="clickIndex"
-      ></nut-elevator>
+      <nut-elevator :index-list="dataList" :height="'100%'" @click-item="clickItem" @click-index="clickIndex"></nut-elevator>
     </view>
 
-    <nut-button block type="primary" @click="showAddNew = true"
-      >新增客户/供应商</nut-button
-    >
+    <nut-button block type="primary" @click="showAddNew = true">新增客户/供应商</nut-button>
+  </view>
 
-    <nut-popup
-      pop-class=""
-      position="bottom"
-      closeable
-      close-icon-position="top-left"
-      close-icon="close"
-      round
-      :style="{ height: '70%' }"
-      v-model:visible="showAddNew"
-      :z-index="100"
-    >
-      <view class="company-addNew">
-        <nut-form class="company-addNew-info">
+  <nut-popup pop-class="popclass" position="bottom" closeable close-icon-position="top-left" close-icon="close" round :style="{ height: '75%' }" v-model:visible="showAddNew" :z-index="100">
+    <view class="company-addNew">
+      <view class="company-addNew-info">
+        <nut-form>
           <nut-form-item label="名称">
-            <input
-              class="nut-input-text"
-              placeholder="请输入名称"
-              type="text"
-              max-length="50"
-            />
+            <input class="nut-input-text" placeholder="请输入名称" type="text" max-length="50" />
           </nut-form-item>
           <nut-form-item label="联系人姓名">
-            <input
-              class="nut-input-text"
-              placeholder="请输入联系人姓名"
-              type="text"
-              max-length="20"
-            />
+            <input class="nut-input-text" placeholder="请输入联系人姓名" type="text" max-length="20" />
           </nut-form-item>
           <nut-form-item label="联系人电话">
-            <input
-              class="nut-input-text"
-              placeholder="请输入联系人电话"
-              type="tel"
-              max-length="20"
-            />
+            <input class="nut-input-text" placeholder="请输入联系人电话" type="tel" max-length="20" />
           </nut-form-item>
           <nut-form-item label="往来类型">
             <nut-radiogroup direction="horizontal" v-model="relatedCompanyType">
@@ -56,13 +26,17 @@
               <nut-radio shape="button" label="2">供应商</nut-radio>
             </nut-radiogroup>
           </nut-form-item>
+          <nut-form-item label="地址">
+            <input class="nut-input-text" placeholder="请输入地址" type="text" max-length="100" />
+          </nut-form-item>
           <nut-form-item label="备注">
-            <nut-textarea placeholder="请输入备注" type="text" />
+            <input class="nut-input-text" placeholder="请输入备注" type="text" max-length="200" />
           </nut-form-item>
         </nut-form>
       </view>
-    </nut-popup>
-  </view>
+      <nut-button block type="primary" @click="()=>{}">保存</nut-button>
+    </view>
+  </nut-popup>
 </template>
 <script lang="ts" setup>
 import {
@@ -73,7 +47,6 @@ import {
   FormItem,
   Rradio,
   RadioGroup,
-  TextArea,
 } from "@nutui/nutui-taro";
 import { reactive, ref } from "vue";
 
@@ -149,11 +122,13 @@ const clickIndex = (key: string) => {
 }
 
 .company-addNew {
-  height: 100%;
-  padding: 40px 23px 16px 26px;
-  width: 100%;
+  height: calc(100% - 56px);
+  padding: 40px 26px 16px 26px;
+  overflow-y: auto;
   &-info {
-    height: 100%;
+    margin-bottom: 10px;
+    height: calc(100% - 68px);
+    overflow-y: auto;
     & .nut-cell {
       padding: 13px 0px !important;
     }
