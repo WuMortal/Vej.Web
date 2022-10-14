@@ -36,19 +36,12 @@
         />
       </view>
 
-      <nut-form>
-        <nut-form-item label="姓名">
-          <input class="nut-input-text" placeholder="请输入姓名" type="text" />
-        </nut-form-item>
-        <nut-form-item label="联系电话">
-          <input
-            class="nut-input-text"
-            placeholder="请输入联系电话"
-            type="text"
-          />
+      <nut-form class="record-content-info">
+        <nut-form-item label="摘要">
+          <input class="nut-input-text" placeholder="请输入摘要" type="text" />
         </nut-form-item>
         <nut-form-item label="账目类型">
-          <nut-radiogroup direction="horizontal">
+          <nut-radiogroup direction="horizontal" v-model="amountStatus">
             <nut-radio shape="button" label="1">已结</nut-radio>
             <nut-radio shape="button" label="2">待结</nut-radio>
             <nut-radio shape="button" label="3">预记</nut-radio>
@@ -103,13 +96,13 @@ const dateDescRef = ref(
 
 // 参数
 const recordType = ref(AmountType.Income);
+const amountStatus = ref("1");
 
 function getCurrentDateDes(month, day) {
   return `${month}月${day}日`;
 }
 
 const dataConfirm = ({ selectedValue, selectedOptions }) => {
-  console.log(selectedValue);
   dateDescRef.value = getCurrentDateDes(selectedValue[0], selectedValue[1]);
   currentDate.setMonth(selectedValue[0] - 1, selectedValue[1]);
 };
@@ -117,6 +110,7 @@ const dataConfirm = ({ selectedValue, selectedOptions }) => {
 
 <style lang="scss">
 .record {
+  height: 100%;
   padding: 60px 23px 16px 26px;
   &-head {
     display: flex;
@@ -183,6 +177,13 @@ const dataConfirm = ({ selectedValue, selectedOptions }) => {
         height: 47px;
         line-height: 47px;
         text-align: left;
+      }
+    }
+
+    &-info {
+      height: 100%;
+      & .nut-cell {
+        padding: 13px 0px !important;
       }
     }
   }

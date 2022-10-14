@@ -14,7 +14,7 @@ import {
   Picker,
   Popup,
   SearchBar, Tag, Toast,
-  Input, Radio, RadioGroup, TextArea
+  Input, Radio, RadioGroup, TextArea, Empty
 } from "@nutui/nutui-taro";
 
 import "./app.scss";
@@ -47,5 +47,6 @@ App.use(Form)
   .use(Input)
   .use(Radio)
   .use(TextArea)
-  .use(RadioGroup);
+  .use(RadioGroup)
+  .use(Empty);
 export default App;

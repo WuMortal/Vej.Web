@@ -20,22 +20,14 @@
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
         </li>
-
-        <li class="function-list-item" @click="()=>{Taro.navigateTo({url:'/pages/contact/index'})}">
-          <view class="function-list-item-text">
-            <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="lianxiren" />
-            <text>联系人管理</text>
-          </view>
-          <nut-icon class="function-list-item-icon" name="right"></nut-icon>
-        </li>
         <li class="function-list-item" @click="()=>{Taro.navigateTo({url:'/pages/company/index'})}">
           <view class="function-list-item-text">
             <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="mendian" />
-            <text>联系公司/门店管理</text>
+            <text>客户/供应商</text>
           </view>
           <nut-icon class="function-list-item-icon" name="right"></nut-icon>
         </li>
-        <li class="function-list-item" @click="()=>{Taro.navigateTo({url:'/pages/company/index'})}">
+        <li class="function-list-item" @click="()=>{Taro.navigateTo({url:'/pages/goods/index'})}">
           <view class="function-list-item-text">
             <nut-icon class="function-list-item-icon" font-class-name="iconfont" class-prefix="icon" name="cailiao" />
             <text>商品/耗材管理</text>

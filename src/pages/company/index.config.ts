@@ -1,5 +1,5 @@
 export default definePageConfig({
-  navigationBarTitleText: "公司/门店",
+  navigationBarTitleText: "客户/供应商",
   navigationBarBackgroundColor: "#fa2a27",
   navigationBarTextStyle: "white",
   disableScroll: true,
